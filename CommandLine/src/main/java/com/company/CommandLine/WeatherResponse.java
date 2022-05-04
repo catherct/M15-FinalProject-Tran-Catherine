@@ -1,6 +1,7 @@
 package com.company.CommandLine;
 
 public class WeatherResponse {
+
     public Coordinates coord;
     public Weather[] weather;
     public String base;
@@ -14,4 +15,5 @@ public class WeatherResponse {
     public String id;
     public String name;
     public int cod;
+
 }
