@@ -10,8 +10,8 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class App { // DO WE NEED ALL THE CLASSES UNDER WeatherResponse?
-					// DO WE NEED TO PRINT OUT ALL VARIABLES UNDER Weather CLASS?
+public class App {
+
 
 	// to obtain standard USD format for crypto exchange rate (ensures the number always rounds to 2 decimal places)
 	private static final DecimalFormat usdFormat = new DecimalFormat("0.00");
@@ -64,10 +64,9 @@ public class App { // DO WE NEED ALL THE CLASSES UNDER WeatherResponse?
 
 							if (weatherResponse != null) {
 								System.out.println("PRINTING CURRENT WEATHER IN " + "'" + cityName + "'..." + "\n"
-										+ "Weather condition id: " + weatherResponse.weather[0].id + "\n"
 										+ "Group of weather parameters: " + weatherResponse.weather[0].main + "\n"
 										+ "Weather condition within the group: " + weatherResponse.weather[0].description + "\n"
-										+ "Weather icon id: " + weatherResponse.weather[0].icon + "\n");
+										+ "Temperature: " + weatherResponse.main.temp);
 							}
 
 
@@ -245,10 +244,9 @@ public class App { // DO WE NEED ALL THE CLASSES UNDER WeatherResponse?
 
 							if (weatherResponse != null) {
 								System.out.println("PRINTING CURRENT WEATHER IN ISS LOCATION..." + "\n"
-										+ "Weather condition id: " + weatherResponse.weather[0].id + "\n"
 										+ "Group of weather parameters: " + weatherResponse.weather[0].main + "\n"
 										+ "Weather condition within the group: " + weatherResponse.weather[0].description + "\n"
-										+ "Weather icon id: " + weatherResponse.weather[0].icon);
+										+ "Temperature: " + weatherResponse.main.temp);
 							}
 
 						} catch (WebClientResponseException we) {
