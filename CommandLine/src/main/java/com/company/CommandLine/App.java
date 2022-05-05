@@ -1,6 +1,5 @@
 package com.company.CommandLine;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.buffer.DataBufferLimitException;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -11,7 +10,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class App { // HOW TO GET RID OF DEBUG STATEMENTS IN CONSOLE? // DO WE NEED ALL THE CLASSES UNDER WeatherResponse?
+public class App { // DO WE NEED ALL THE CLASSES UNDER WeatherResponse?
 					// DO WE NEED TO PRINT OUT ALL VARIABLES UNDER Weather CLASS?
 
 	// to obtain standard USD format for crypto exchange rate (ensures the number always rounds to 2 decimal places)
@@ -31,10 +30,10 @@ public class App { // HOW TO GET RID OF DEBUG STATEMENTS IN CONSOLE? // DO WE NE
 
 			System.out.println("Welcome to the main menu! Please choose the number of an actionable item below:" + "\n"
 					+ "===============================================================================" + "\n"
-					+ "Press 1 to print the weather of a city." + "\n"
-					+ "Press 2 to print the location of the International Space Station (ISS)." + "\n"
-					+ "Press 3 to print the weather of the location of the ISS." + "\n"
-					+ "Press 4 to print current cryptocurrency prices." + "\n" + "\n"
+					+ "Press '1' to print the weather of a city." + "\n"
+					+ "Press '2' to print the location of the International Space Station (ISS)." + "\n"
+					+ "Press '3' to print the weather of the location of the ISS." + "\n"
+					+ "Press '4' to print current cryptocurrency prices." + "\n" + "\n"
 					+ "RESPOND WITH '5' TO EXIT.");
 
 
@@ -64,7 +63,7 @@ public class App { // HOW TO GET RID OF DEBUG STATEMENTS IN CONSOLE? // DO WE NE
 							WeatherResponse weatherResponse = weatherNow.share().block();
 
 							if (weatherResponse != null) {
-								System.out.println("PRINTING CURRENT WEATHER IN " + cityName + "..." + "\n"
+								System.out.println("PRINTING CURRENT WEATHER IN " + "'" + cityName + "'..." + "\n"
 										+ "Weather condition id: " + weatherResponse.weather[0].id + "\n"
 										+ "Group of weather parameters: " + weatherResponse.weather[0].main + "\n"
 										+ "Weather condition within the group: " + weatherResponse.weather[0].description + "\n"
@@ -268,7 +267,7 @@ public class App { // HOW TO GET RID OF DEBUG STATEMENTS IN CONSOLE? // DO WE NE
 
 					case 4:
 						// code allowing user to retrieve current crypto prices
-						System.out.println("To print the price of a cryptocurrency in US dollars (USD), input the symbol of a cryptocurrency (e.g. BIT or ETH) here: ");
+						System.out.println("To print the price of a cryptocurrency in US dollars (USD), input the symbol of a cryptocurrency (e.g. BTC or ETH) here: ");
 
 						// user inputs a crypto symbol
 						String cryptoInput = myScan.nextLine();
