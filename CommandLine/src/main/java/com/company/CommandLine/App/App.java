@@ -303,6 +303,7 @@ public class App {
 						break;
 
 					case 5:
+						// to exit out of application
 						System.out.println("Thank you! Have a good day! :)");
 						break;
 
