@@ -52,7 +52,7 @@ public class App {
 						String cityName = myScan.nextLine();
 
 						WebClient weatherClient = WebClient.create("https://api.openweathermap.org/data/2.5/weather?q=" + cityName
-								+ "&appid=92f5008d6444dde521a2b983aa90ebd5");
+								+ "&appid=92f5008d6444dde521a2b983aa90ebd5&units=imperial");
 
 
 						try {
@@ -64,9 +64,8 @@ public class App {
 
 							if (weatherResponse != null) {
 								System.out.println("PRINTING CURRENT WEATHER IN " + "'" + cityName + "'..." + "\n"
-										+ "Group of weather parameters: " + weatherResponse.weather[0].main + "\n"
-										+ "Weather condition within the group: " + weatherResponse.weather[0].description + "\n"
-										+ "Temperature: " + weatherResponse.main.temp);
+										+ "Weather conditions: " + weatherResponse.weather[0].description + "\n"
+										+ "Temperature (in degrees Fahrenheit): " + weatherResponse.main.temp);
 							}
 
 
@@ -130,7 +129,7 @@ public class App {
 						}
 
 						WebClient geoClient = WebClient.create("https://api.openweathermap.org/data/2.5/weather?lat="
-								+ lat + "&lon=" + lon + "&appid=92f5008d6444dde521a2b983aa90ebd5");
+								+ lat + "&lon=" + lon + "&appid=92f5008d6444dde521a2b983aa90ebd5&units=imperial");
 
 
 						try {
@@ -203,7 +202,7 @@ public class App {
 						}
 
 						geoClient = WebClient.create("https://api.openweathermap.org/data/2.5/weather?lat="
-								+ lat + "&lon=" + lon + "&appid=92f5008d6444dde521a2b983aa90ebd5");
+								+ lat + "&lon=" + lon + "&appid=92f5008d6444dde521a2b983aa90ebd5&units=imperial");
 
 						try {
 							Mono<WeatherResponse> geo = geoClient
@@ -233,7 +232,7 @@ public class App {
 						}
 
 						weatherClient = WebClient.create("https://api.openweathermap.org/data/2.5/weather?lat="
-								+ lat + "&lon=" + lon + "&appid=92f5008d6444dde521a2b983aa90ebd5");
+								+ lat + "&lon=" + lon + "&appid=92f5008d6444dde521a2b983aa90ebd5&units=imperial");
 
 						try {
 							Mono<WeatherResponse> weatherNow = weatherClient
@@ -244,9 +243,8 @@ public class App {
 
 							if (weatherResponse != null) {
 								System.out.println("PRINTING CURRENT WEATHER IN ISS LOCATION..." + "\n"
-										+ "Group of weather parameters: " + weatherResponse.weather[0].main + "\n"
-										+ "Weather condition within the group: " + weatherResponse.weather[0].description + "\n"
-										+ "Temperature: " + weatherResponse.main.temp);
+										+ "Weather conditions: " + weatherResponse.weather[0].description + "\n"
+										+ "Temperature (in degrees Fahrenheit): " + weatherResponse.main.temp);
 							}
 
 						} catch (WebClientResponseException we) {
