@@ -1,4 +1,4 @@
-package com.company.CommandLine;
+package com.company.CommandLine.App.ISSPackage;
 
 public class SpaceResponse {
 

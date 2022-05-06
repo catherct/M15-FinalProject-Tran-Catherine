@@ -1,4 +1,4 @@
-package com.company.CommandLine;
+package com.company.CommandLine.App.WeatherPackage;
 
 public class Weather {
 

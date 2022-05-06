@@ -1,5 +1,8 @@
-package com.company.CommandLine;
+package com.company.CommandLine.App;
 
+import com.company.CommandLine.App.CryptoPackage.CryptoResponse;
+import com.company.CommandLine.App.ISSPackage.SpaceResponse;
+import com.company.CommandLine.App.WeatherPackage.WeatherResponse;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.buffer.DataBufferLimitException;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,14 +24,14 @@ public class App {
 		// call scanner to read user input
 		Scanner myScan = new Scanner(System.in);
 
-		// accept user response in following line
-		int userInput = 0;
+		// declare user input variables and set userInput to 0
 		String input;
+		int userInput = 0;
 
 
 		do { // build menu and display options
 
-			System.out.println("Welcome to the main menu! Please choose the number of an actionable item below:" + "\n"
+			System.out.println("Welcome to the main menu!" + "\n" + "Please choose the number of an actionable item below:" + "\n"
 					+ "===============================================================================" + "\n"
 					+ "Press '1' to print the weather of a city." + "\n"
 					+ "Press '2' to print the location of the International Space Station (ISS)." + "\n"
@@ -37,9 +40,10 @@ public class App {
 					+ "RESPOND WITH '5' TO EXIT.");
 
 
-			try {
-				input = myScan.nextLine();
-				userInput = Integer.parseInt(input);
+			try { // switch statement wrapped inside try-catch block
+
+				input = myScan.nextLine(); // scan for user input on next line
+				userInput = Integer.parseInt(input); // convert user input into integer format
 
 
 				switch (userInput) {
@@ -65,7 +69,7 @@ public class App {
 							if (weatherResponse != null) {
 								System.out.println("PRINTING CURRENT WEATHER IN " + "'" + cityName + "'..." + "\n"
 										+ "Weather conditions: " + weatherResponse.weather[0].description + "\n"
-										+ "Temperature (in degrees Fahrenheit): " + weatherResponse.main.temp);
+										+ "Temperature (in degrees Fahrenheit): " + weatherResponse.main.temp + "\n");
 							}
 
 
@@ -141,9 +145,9 @@ public class App {
 							WeatherResponse geoResponse = geo.share().block();
 							if (geoResponse != null) {
 								System.out.println("City: " + geoResponse.name);
-								System.out.println("Country: " + geoResponse.sys.country);
+								System.out.println("Country: " + geoResponse.sys.country + "\n");
 								if (geoResponse.sys.country == null) {
-									System.out.println("THE ISS IS NOT CURRENTLY IN A COUNTRY.");
+									System.out.println("THE ISS IS NOT CURRENTLY IN A COUNTRY." + "\n");
 								}
 							}
 
@@ -213,9 +217,9 @@ public class App {
 							WeatherResponse geoResponse = geo.share().block();
 							if (geoResponse != null) {
 								System.out.println("City: " + geoResponse.name);
-								System.out.println("Country: " + geoResponse.sys.country);
+								System.out.println("Country: " + geoResponse.sys.country + "\n");
 								if (geoResponse.sys.country == null) {
-									System.out.println("THE ISS IS NOT CURRENTLY IN A COUNTRY.");
+									System.out.println("THE ISS IS NOT CURRENTLY IN A COUNTRY." + "\n");
 								}
 							}
 
@@ -244,7 +248,7 @@ public class App {
 							if (weatherResponse != null) {
 								System.out.println("PRINTING CURRENT WEATHER IN ISS LOCATION..." + "\n"
 										+ "Weather conditions: " + weatherResponse.weather[0].description + "\n"
-										+ "Temperature (in degrees Fahrenheit): " + weatherResponse.main.temp);
+										+ "Temperature (in degrees Fahrenheit): " + weatherResponse.main.temp + "\n");
 							}
 
 						} catch (WebClientResponseException we) {
@@ -281,7 +285,7 @@ public class App {
 							if (cryptoResponse != null) {
 								System.out.println("Name: " + cryptoResponse[0].name);
 								System.out.println("Symbol: " + cryptoResponse[0].asset_id);
-								System.out.println("Current price in USD: " + usdFormat.format(cryptoResponse[0].price_usd));
+								System.out.println("Current price in USD: $" + usdFormat.format(cryptoResponse[0].price_usd) + "\n");
 							}
 
 						} catch (WebClientResponseException we) {

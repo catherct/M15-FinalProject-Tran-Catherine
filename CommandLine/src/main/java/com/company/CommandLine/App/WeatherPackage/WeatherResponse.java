@@ -1,4 +1,6 @@
-package com.company.CommandLine;
+package com.company.CommandLine.App.WeatherPackage;
+
+import com.company.CommandLine.App.ISSPackage.Coordinates;
 
 public class WeatherResponse {
 
